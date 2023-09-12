@@ -25,6 +25,7 @@ class GradientContainer extends StatelessWidget {
             Image.asset(
               "assets/images/quiz-logo.png",
               width: MediaQuery.of(context).size.width * 0.65,
+              color: const Color.fromARGB(125, 255, 255, 255),
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
