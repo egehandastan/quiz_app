@@ -37,11 +37,12 @@ class GradientContainer extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.02,
             ),
-            OutlinedButton(onPressed: () {}, 
-            style: OutlinedButton.styleFrom(
-              foregroundColor: Colors.white
-            ),
-            child: const Text('Start Quiz'))
+            OutlinedButton.icon(
+                onPressed: () {},
+                style: OutlinedButton.styleFrom(foregroundColor: Colors.white),
+                icon: const Icon(Icons.arrow_right_alt),
+                label: const Text('Start Quiz'),
+                ),
           ],
         ),
       ),
