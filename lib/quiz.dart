@@ -3,7 +3,8 @@ import 'package:quiz_app/questions_screen.dart';
 import 'package:quiz_app/start_screen.dart';
 
 class Quiz extends StatefulWidget {
-  Quiz({super.key});
+  const Quiz({super.key});
+
   @override
   State<Quiz> createState() {
     return _QuizState();
@@ -11,32 +12,38 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  Widget? activeScreen;
+  var activeScreen = 'start-screen';
 
-@override
-  void initState() {
-   activeScreen = StartScreen(switchScreen);
-    super.initState();
-  }
   void switchScreen() {
     setState(() {
-      activeScreen = const QuestionsScreen();
+      activeScreen = 'questions-screen';
     });
   }
 
   @override
   Widget build(context) {
+    Widget screenWidget = StartScreen(switchScreen);
+
+    if (activeScreen == 'questions-screen') {
+      screenWidget = const QuestionsScreen();
+    }
+
     return MaterialApp(
       home: Scaffold(
-          body: Container(
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(colors: [
-          Color.fromARGB(255, 47, 4, 120),
-          Color.fromARGB(255, 83, 46, 146),
-          Color.fromARGB(255, 94, 65, 144),
-        ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
-        child: activeScreen,
-      )),
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 78, 13, 151),
+                Color.fromARGB(255, 107, 15, 168),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          child: screenWidget,
+        ),
+      ),
     );
   }
 }
